@@ -32,6 +32,10 @@ const data = [
     }
 ]
 
+// Surge pricing
+const SURGE_CHARGE_RATE = 1.5
+const SECONDS_PER_UNIT = 5.75
+
 const RideOptionsCard = () => {
     const navigation = useNavigation();
     const [selected, setSelected] = useState(null);
@@ -67,11 +71,19 @@ const RideOptionsCard = () => {
                             <Text style={tw`text-xl font-semibold`}>{title}</Text>
                             <Text>{travelTimeInformation?.duration.text}</Text>
                         </View>
-                        <Text style={tw`text-xl`}>₹1000</Text>
+                        <Text style={tw`text-xl`}>
+                            {new Intl.NumberFormat("en-in", {
+                                style: "currency",
+                                currency: "INR"
+                            }).format(
+                                (travelTimeInformation?.duration.value * SURGE_CHARGE_RATE * multiplier)/SECONDS_PER_UNIT
+                            )
+                            }
+                        </Text>
                     </TouchableOpacity>
                 )}
             />
-            <View>
+            <View style={tw`mt-auto border-t border-gray-200`}>
                 <TouchableOpacity disabled={!selected} style={tw`bg-black py-3 m-3 ${!selected && "bg-gray-300"}`}>
                     <Text style={tw`text-center text-white text-xl`}>
                         Choose {selected?.title}
