@@ -16,4 +16,4 @@ This is a clone of the Uber cab booking app. It allows the user to enter the sou
 * Expo - To build and test the app
 
 ## Directions to run ##
-Clone the repository and run `npm install` from inside the repository to fetch all the dependencies. Use `expo start` to start the app. 
+Clone the repository and run `npm install` from inside the repository to fetch all the dependencies. Create a `.env` file with an entry `GOOGLE_MAPS_APIKEY=<your-api-key>` where `<your-api-key>` is your Google Maps API access token. Use `expo start` to start the app. 
